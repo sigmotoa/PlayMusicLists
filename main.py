@@ -3,14 +3,25 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 
 from routers import canciones
 
-app = FastAPI()
+app = FastAPI(
+    title="Music List",
+    description="FastAPI Music Lists",
+    version="0.0.1",
+
+)
+
 
 app.include_router(canciones.router, prefix="/canciones", tags=["canciones"])
 
 
 
-@app.get("/", response_class=HTMLResponse)
+@app.get("/",
+         response_class=HTMLResponse,
+         summary="Home")
 async def root():
+    """**Home page**
+    FastAPI Music Lists with a nice Music
+    """
     return """
     <html>
         <head>
