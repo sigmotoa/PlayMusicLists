@@ -1,16 +1,22 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.encoders import jsonable_encoder
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
+
+
 
 from routers import canciones, artistas, detalleplaylist, generos, playlist
 
+templates = Jinja2Templates(directory="templates")
 
 app = FastAPI(
     title="Music List",
     description="FastAPI Music Lists",
     version="0.0.1",
-
 )
 
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 app.include_router(canciones.router, prefix="/canciones", tags=["canciones"])
 app.include_router(artistas.router, prefix="/artistas", tags=["artistas"])
