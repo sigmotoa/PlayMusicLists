@@ -10,22 +10,31 @@ from models.playlist import Playlist
 
 router = APIRouter()
 
-@router.get("/{tradicional}",response_model=List[Playlist])
-async def list_playlsts():
-    return list(playlist.playlists)
-
-@router.put("/{playlist_id}")
-def insert_playlist(
-        playlist_id: int=Path(...,
-        description="Id de lista",
-        title="lista",
-        gt=0),
-        playlists: Playlist = Body(...)
-    ):
-    tmpp=playlist.playlists
-    tmpp.append(playlists)
-    return playlists
-
 @router.get("/",response_class=HTMLResponse)
 def show_playlist(request:Request):
     return templates.TemplateResponse("playlists.html", {"request": request, "title": "playlists", "playlists": playlist.playlists})
+
+@router.get("/create",response_class=HTMLResponse,status_code=201)
+def create_artistas(request: Request):
+    return templates.TemplateResponse("newPlaylist.html",{
+        "request":request,
+        "title":"Nueva Playlist"
+    })
+
+@router.post("/new",status_code=201)
+def adicionar_artista(id: int =Form(...), nombre: str =Form(...)):
+    body_playlist = {"id": id, "nombre": nombre}
+    playlist.playlists.append(body_playlist)
+    return RedirectResponse(url="/playlists/",status_code=303)
+
+@router.get("/{id_artista}",response_class=HTMLResponse)
+def get_playlist(request: Request,id_playlist: int=Path(...)):
+    playlists= playlist.playlists.__getitem__(id_playlist)
+    response = templates.TemplateResponse("artista.html",{
+        "request": request,
+        "title": "Playlist",
+        "artista": playlists
+        })
+    if not playlists:
+        response.status_code=404
+    return response
