@@ -1,0 +1,12 @@
+{% include 'header.html' %}
+{% include 'navbar.html' %}
+<div class="container-fluid">
+    {% for cancion in canciones %}
+        <div class="row justify-content-center" style="text-align: center;">
+            <div class="col col-sm-6" style="border: 1px solid black; margin: 1em 0.5em; border-radius: 10px;">
+                {% include 'cancion.html' %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% include 'footer.html' %}
