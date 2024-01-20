@@ -20,6 +20,7 @@ app.include_router(detalleplaylist.router, prefix="/detalles", tags=["detalles"]
 
 
 
+
 @app.get("/",
          response_class=HTMLResponse,
          summary="Home")
@@ -43,7 +44,7 @@ async def root():
                 <li><a href="/generos/">Generos</a></li>
                 <li><a href="/playlists/">Playlists</a></li>
                 <li><a href="/detalles/">Detalles</a></li>
-                
+            <h1>Artistas</h1>           
     </html>
     
     """
