@@ -1,0 +1,43 @@
+{% include 'header.html' %}
+{% include 'navbar.html' %}
+
+<div class="container" style="margin-top:1em ">
+    <form action="/cancion/new" method="post">
+
+    <label>Id</label>
+        <input type="text" name="id" class="form-control" placeholder="Id" required id="id">
+        <br>
+        <label>Nombre Cancion</label>
+        <input type="text" name="nombre" class="form-control" placeholder="Nombre" required id="nombre">
+
+        <br>
+        <label>id Artista</label>
+        <input type="text" name="idArtista" class="form-control" placeholder="IdArtista" required id="idArtista">
+        <br>
+        <label>nombre Artista</label>
+        <input type="text" name="nomartista" class="form-control" placeholder="Nomartista" required id="nomartista">
+        <br>
+        <label>id Genero</label>
+        <input type="text" name="idgenero" class="form-control" placeholder="idgenero" required id="idgenero">
+        <br>
+        <label>Genero </label>
+        <input type="text" name="nomGenero" class="form-control" placeholder="NomGenero" required id="nomGenero">
+        <label>id Genero</label>
+        <input type="text" name="idgenero2" class="form-control" placeholder="idgenero2" required id="idgenero2">
+        <br>
+        <label>Genero </label>
+        <input type="text" name="nomGenero2" class="form-control" placeholder="NomGenero2" required id="nomGenero2">
+        <br>
+        <label>Duracion</label>
+        <input type="text" name="duracion" class="form-control" placeholder="Duracion" required id="duracion">
+        <br>
+   <input type="submit">
+
+    </form>
+
+
+</div>
+
+
+
+{% include 'footer.html' %}

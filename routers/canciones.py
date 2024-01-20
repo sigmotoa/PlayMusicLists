@@ -14,20 +14,27 @@ router = APIRouter()
 def show_canciones(request:Request):
     return templates.TemplateResponse("canciones.html", {"request": request, "title": "canciones", "canciones": canciones.canciones})
 
+@router.get("/create",response_class=HTMLResponse,status_code=201)
+def create_cancion(request: Request):
+    return templates.TemplateResponse("newCancion.html",{
+        "request":request,
+        "title":"Nueva Cancion"
+    })
 
-@router.get("/{pruebas}", response_model=List[Cancion])
-async def listar_canciones():
-    return list(canciones.canciones)
+@router.post("/new",status_code=201)
+def adicionar_cancion(id: int=Form(...),nombre: str=Form(...),idArtista:int=Form(...), nomartista: str =Form(...), idgenero: int =Form(...), nomgenero: str =Form(...), idgenero2: int =Form(...), nomgenero2: str =Form(...), duracion: int =Form(...)):
+    body_artista = {"id":id, "nombre":nombre, "idArtista":idArtista, "nomartista":nomartista, "idgenero":idgenero, "nomGenero":nomgenero, "idgenero2":idgenero2, "nomGenero2":nomgenero2, "duracion":duracion}
+    canciones.canciones.append(body_artista)
+    return RedirectResponse(url="/canciones/",status_code=303)
 
-@router.put("/{cancion_id}")
-def insert_cancion(
-        cancion_id: int = Path(...,
-        description="Id de cancion",
-        title="Id Cancion",
-        gt=0
-         ),
-        cancion1: Cancion =Body(...)
-        ):
-    tmpc=canciones.caciones
-    tmpc.append(cancion1)
-    return cancion1
+@router.get("/{id_cancion}",response_class=HTMLResponse)
+def get_artista(request: Request,id_cancion: int=Path(...)):
+    cancion= canciones.canciones.__getitem__(id_cancion)
+    response = templates.TemplateResponse("cancion.html",{
+        "request": request,
+        "title": "Cacion",
+        "cancion": cancion
+        })
+    if not cancion:
+        response.status_code=404
+    return response
