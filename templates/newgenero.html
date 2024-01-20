@@ -1,0 +1,21 @@
+{% include 'header.html' %}
+{% include 'navbar.html' %}
+
+<div class="container" style="margin-top:1em ">
+    <form action="/generos/new" method="post">
+
+    <label>Id</label>
+        <input type="text" name="id" class="form-control" placeholder="Id" required id="id">
+        <br>
+        <label>Nombre Genero</label>
+        <input type="text" name="nombre" class="form-control" placeholder="Nombre" required id="nombre">
+   <input type="submit">
+
+    </form>
+
+
+</div>
+
+
+
+{% include 'footer.html' %}
