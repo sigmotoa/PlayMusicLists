@@ -19,11 +19,17 @@ def home_generos(request:Request):
 
 @router.get("/",response_class=HTMLResponse)
 def show_generos(request:Request):
-    return templates.TemplateResponse("generos.html", {"request": request, "title": "Generos", "generos": generos.generos})
+    return templates.TemplateResponse("generos.html", {
+        "request": request,
+        "title": "Generos",
+        "generos": generos.generos})
     #return list(generos.generos)
+
 @router.get("/create", response_class=HTMLResponse, status_code=201)
 def create_genero(request:Request):
-    return templates.TemplateResponse("newgenero.html", {"request": request, "title": "Nuevo Genero"})
+    return templates.TemplateResponse("newgenero.html", {
+        "request": request, "title": "Nuevo Genero"
+    })
 
 @router.post("/new", status_code=201)
 def adicionar_genero(id: int =Form(...), nombre: str =Form(...)):

@@ -1,0 +1,28 @@
+{% include 'header.html' %}
+{% include 'navbar.html' %}
+
+<div class="container" style="margin-top:1em ">
+    <form action="/artistas/new" method="post">
+
+    <label>Id</label>
+        <input type="text" name="id" class="form-control" placeholder="Id" required id="id">
+        <br>
+        <label>Nombre Artista</label>
+        <input type="text" name="nombre" class="form-control" placeholder="Nombre" required id="nombre">
+        <br>
+        <label>id Genero</label>
+        <input type="text" name="idgenero" class="form-control" placeholder="idgenero" required id="idgenero">
+        <br>
+        <label>Genero </label>
+        <input type="text" name="genero" class="form-control" placeholder="Genero" required id="genero">
+        <br>
+   <input type="submit">
+
+    </form>
+
+
+</div>
+
+
+
+{% include 'footer.html' %}
