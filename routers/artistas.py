@@ -1,15 +1,15 @@
 from typing import List
-from fastapi import APIRouter, HTTPException, status, Path, Body
+from fastapi import APIRouter, Path,Body
 
 from models import artistas
 from models.artistas import Artista
 
 router = APIRouter()
-@router.get(path="/" , response_model=List[Artista])
-async def list_artistas():
+@router.get("/",response_model=list[Artista])
+async def listar_artistas():
     return list(artistas.artistas)
 
-@router.put(path="/", response_model=Artista)
+@router.put("/{artista_id}")
 def insert_artista(artista_id: int=Path(...,
             description="Id de artista",
             title="Id de artista",
