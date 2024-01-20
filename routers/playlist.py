@@ -27,5 +27,5 @@ def insert_playlist(
     return playlists
 
 @router.get("/",response_class=HTMLResponse)
-def show_canciones(request:Request):
+def show_playlist(request:Request):
     return templates.TemplateResponse("playlists.html", {"request": request, "title": "playlists", "playlists": playlist.playlists})
