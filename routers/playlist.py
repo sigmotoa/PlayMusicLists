@@ -18,8 +18,8 @@ def insert_playlist(
         description="Id de lista",
         title="lista",
         gt=0),
-        playlist: Playlist = Body(...)
+        playlists: Playlist = Body(...)
     ):
-    tmpg =  playlist.playlists
-    tmpg.append(playlist)
-    return playlist
+    tmpp=playlist.playlists
+    tmpp.append(playlists)
+    return playlists

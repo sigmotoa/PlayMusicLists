@@ -12,7 +12,7 @@ router = APIRouter()
 async def list_generos():
     return list(generos.generos)
 
-@router.put("/generos/{genero_id}")
+@router.put("/{genero_id}")
 def insert_genero(
         genero_id: int=Path(...,
         description="Id de Genero",
