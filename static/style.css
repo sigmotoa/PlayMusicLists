@@ -1,0 +1,19 @@
+table,th,td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+th,td{
+    background-color: #9BE8D8;
+}
+h3{
+    background-color:#F8FDCF ;
+}
+.justify-content-center{
+    text-align: center;
+}
+.col-sm-6{
+    border: 1px solid black;
+    margin: 1em 0.5em;
+    border-radius: 10px;":
+    background-color: #78C1F3;
+}
