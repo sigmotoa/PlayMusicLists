@@ -11,7 +11,7 @@ router = APIRouter()
 async def listar_canciones():
     return list(canciones.canciones)
 
-@router.put("/canciones/{cancion_id}")
+@router.put("/{cancion_id}")
 def insert_cancion(
         cancion_id: int = Path(...,
                 description="Id de cancion", title="Id Cancion",
