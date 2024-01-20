@@ -12,7 +12,7 @@ router = APIRouter()
 async def list_playlsts():
     return list(playlist.playlists)
 
-@router.put("/generos/{genero_id}")
+@router.put("/{playlist_id}")
 def insert_playlist(
         playlist_id: int=Path(...,
         description="Id de lista",
@@ -20,6 +20,6 @@ def insert_playlist(
         gt=0),
         playlist: Playlist = Body(...)
     ):
-    tmpg=playlist.playlists
+    tmpg =  playlist.playlists
     tmpg.append(playlist)
     return playlist

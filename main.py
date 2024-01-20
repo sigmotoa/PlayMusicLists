@@ -15,7 +15,7 @@ app = FastAPI(
 app.include_router(canciones.router, prefix="/canciones", tags=["canciones"])
 app.include_router(artistas.router, prefix="/artistas", tags=["artistas"])
 app.include_router(generos.router, prefix="/generos", tags=["generos"])
-app.include_router(playlist.router, prefix="/playlist", tags=["playlist"])
+app.include_router(playlist.router, prefix="/playlists", tags=["playlists"])
 app.include_router(detalleplaylist.router, prefix="/detalles", tags=["detalles"])
 
 
@@ -44,7 +44,7 @@ async def root():
                 <li><a href="/generos/">Generos</a></li>
                 <li><a href="/playlists/">Playlists</a></li>
                 <li><a href="/detalles/">Detalles</a></li>
-            <h1>Artistas</h1>           
+                    
     </html>
     
     """
